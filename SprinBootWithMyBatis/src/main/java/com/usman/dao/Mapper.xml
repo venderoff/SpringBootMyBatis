@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usman.dao.ModelMapper">
+	
+	<resultMap type="employee" id="result">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="city" column="city" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		
+	</resultMap>
+	
+	<select id="getAllEmployees" resultType="employee" resultMap="result">
+		SELECT * FROM 	customers ;
+	</select>
+</mapper>

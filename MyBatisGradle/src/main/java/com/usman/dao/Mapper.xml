@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usman.dao.ModelDao">
+	
+	<resultMap type="model" id="result">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="city" column="city" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		
+	</resultMap>
+	
+	<select id="getAllmodels" resultType="model" resultMap="result">
+		SELECT * FROM customers ;
+	</select>
+	
+	<insert id="insertmodel" parameterType="model" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO model(fullname, email, gender, hobbies, country, address)
+		VALUES(#{fullname}, #{email}, #{gender}, #{hobbies}, #{country}, #{address})
+	</insert>
+	
+	<update id="updatemodel" parameterType="model">
+		UPDATE model SET fullname = #{fullname}, email = #{email}, gender = #{gender}, hobbies = #{hobbies}, country = #{country}, address = #{address} 
+		WHERE id = #{id} 
+	</update>
+	
+	<delete id="deletemodel" parameterType="int">
+		DELETE FROM model WHERE id = #{modelId}
+	</delete>
+	
+	<select id="findById" parameterType="int" resultType="model" resultMap="result">
+		SELECT * FROM model WHERE id = #{modelId}
+	</select> 
+</mapper>
